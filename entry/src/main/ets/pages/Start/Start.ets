@@ -19,7 +19,7 @@ struct Start {
   }
   toMain(){
     clearInterval(this.timer)
-    router.replaceUrl({url:'pages/Index'})
+    router.replaceUrl({url:'pages/Index/index'})
   }
   build() {
     Stack({ alignContent: Alignment.TopEnd }) {

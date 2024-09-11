@@ -30,6 +30,12 @@ export default class EntryAbility extends UIAbility {
     })
     userSetting.setUserAd(ad)
     promptAction.showToast({message:JSON.stringify(ad)})
+
+    const token = userSetting.getUserToken()
+    if(token){
+
+    }
+
     //朴素写法
     // if(ad.showAd){
     //   windowStage.loadContent('pages/Start/Start')
