@@ -1,5 +1,5 @@
-import { AdvertClass, userSetting } from 'basic';
-import { promptAction, router } from '@kit.ArkUI';
+import { AdvertClass, userSetting, USER_SETTING_TOKEN } from 'basic';
+import { promptAction, router, window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -19,7 +19,15 @@ struct Start {
   }
   toMain(){
     clearInterval(this.timer)
-    router.replaceUrl({url:'pages/Index/index'})
+    window.findWindow("ad_window").destroyWindow()
+    // const token = AppStorage.get(USER_SETTING_TOKEN) as string
+    // if(token){
+    //   router.replaceUrl({url:'pages/Index/index'})
+    // }else{
+    //   router.replaceUrl({url:'pages/Login/login'})
+    // }
+
+
   }
   build() {
     Stack({ alignContent: Alignment.TopEnd }) {

@@ -1,4 +1,7 @@
+import { login } from '../../api/user'
 import { loginModel } from '../../viewmodels'
+import { promptAction, router } from '@kit.ArkUI'
+import { userSetting, USER_SETTING_TOKEN } from 'basic'
 
 @Entry
 @Component
@@ -27,6 +30,25 @@ struct Login {
     return false
   }
 
+  async login(){
+    try {
+      this.showLoading = true
+      const token = await login(this.loginForm)
+      // 写入首选项
+      userSetting.setUserToken(token)
+      // 写入内存
+      AppStorage.setOrCreate(USER_SETTING_TOKEN, token)
+      router.replaceUrl({
+        url: "pages/Index/index"
+      })
+
+      promptAction.showToast({ message: '登录成功' })
+    }catch (error){
+
+    } finally {
+      this.showLoading = false
+    }
+  }
 
   build() {
     Column() {
@@ -74,6 +96,9 @@ struct Login {
       .width('100%')
       .height(50)
       .margin({ top: 50 })
+      .onClick(() => {
+        this.login()
+      })
     }
     .padding({ left: 32, right: 32 })
     .margin({ top: 40 })

@@ -29,12 +29,10 @@ export default class EntryAbility extends UIAbility {
       },500)
     })
     userSetting.setUserAd(ad)
-    promptAction.showToast({message:JSON.stringify(ad)})
+    // promptAction.showToast({message:JSON.stringify(ad)})
 
     const token = userSetting.getUserToken()
-    if(token){
 
-    }
 
     //朴素写法
     // if(ad.showAd){
@@ -48,7 +46,12 @@ export default class EntryAbility extends UIAbility {
       await window2.showWindow()
       window2.setUIContent('pages/Start/Start')
     }
-    windowStage.loadContent('pages/Index')
+    promptAction.showToast({message: JSON.stringify(token)})
+    if (token) {
+      await windowStage.loadContent('pages/Index/index'); // 跳到主页
+    } else {
+      await windowStage.loadContent('pages/Login/login'); // 跳到登录页
+    }
 
 
     // windowStage.loadContent('pages/Index', (err) => {
