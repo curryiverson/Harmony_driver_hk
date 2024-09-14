@@ -33,7 +33,7 @@ async function requestByHttp<T>(url:string, method:http.RequestMethod = http.Req
       // promptAction.showToast({message:'登录失效'})
       router.replaceUrl({url:'pages/Login/login'})
       AppStorage.setOrCreate(USER_SETTING_TOKEN, '')
-      return Promise.reject(new Error("请求地址错误"))
+      return Promise.reject(new Error("登录失效"))
     }else{
       const res = JSON.parse(result.result as string) as ResponseData<T>
       return res.data as T

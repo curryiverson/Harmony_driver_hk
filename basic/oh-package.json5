@@ -5,5 +5,9 @@
   "main": "Index.ets",
   "author": "",
   "license": "Apache-2.0",
-  "dependencies": {}
+  "dependencies": {
+    "@ohos/axios": "^2.2.3"
+  },
+  "devDependencies": {},
+  "dynamicDependencies": {}
 }

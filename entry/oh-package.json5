@@ -6,7 +6,9 @@
   "author": "",
   "license": "",
   "dependencies": {
-    'basic': 'file:../basic'
-  }
+    "basic": "file:../basic",
+    "@ohos/axios": "^2.2.3"
+  },
+  "devDependencies": {},
+  "dynamicDependencies": {}
 }
-
