@@ -1,7 +1,7 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction, window } from '@kit.ArkUI';
-import { AdvertClass, userSetting} from 'basic'
+import { AdvertClass, userSetting, USER_SETTING_TOKEN} from 'basic'
 const defaultAd:AdvertClass = {
   showAd:false,
   adTime:5,
@@ -32,7 +32,7 @@ export default class EntryAbility extends UIAbility {
     // promptAction.showToast({message:JSON.stringify(ad)})
 
     const token = userSetting.getUserToken()
-
+    AppStorage.setOrCreate(USER_SETTING_TOKEN, token)
 
     //朴素写法
     // if(ad.showAd){

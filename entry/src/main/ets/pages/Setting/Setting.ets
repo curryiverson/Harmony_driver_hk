@@ -1,10 +1,26 @@
-import {  HkCard, HkCardItem, HkNavBar } from 'basic'
+import {  HkCard, HkCardItem, HkNavBar, HkConfirm } from 'basic'
 
 @Entry
 @Component
 struct Setting {
   @State message: string = 'Hello World';
-
+  Confirm: CustomDialogController = new CustomDialogController({
+    builder:HkConfirm({
+      message:'确定要退出登录？',
+      buttons:[
+        {
+          text: '取消',
+        },
+        {
+          text: '退出',
+          fontColor: $r("app.color.primary")
+        },
+      ]
+    }),
+    customStyle: true,
+    alignment: DialogAlignment.Center,
+    autoCancel: false
+  })
   build() {
     Column() {
       HkNavBar({navTitle:'系统设置'})
@@ -31,6 +47,9 @@ struct Setting {
           .backgroundColor($r("app.color.white"))
           .borderRadius(6)
           .height(60)
+          .onClick(() => {
+            this.Confirm.open()
+          })
       }
       .padding({
         left:15,

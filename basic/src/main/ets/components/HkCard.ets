@@ -1,3 +1,7 @@
+/*
+ * 封装的Card组件，配合cardItem组件使用
+ *
+ * */
 @Component
 struct HkCard {
   @BuilderParam

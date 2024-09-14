@@ -2,6 +2,7 @@ import http from '@ohos.net.http';
 import {BASE_URL, USER_SETTING_TOKEN} from '../constants'
 import { ResponseData } from '../viewmodels';
 import { promptAction, router } from '@kit.ArkUI';
+import { userSetting } from './setting';
 
 async function requestByHttp<T>(url:string, method:http.RequestMethod = http.RequestMethod.GET, data?: object) {
   //创建请求对象
@@ -18,7 +19,7 @@ async function requestByHttp<T>(url:string, method:http.RequestMethod = http.Req
     method,
     header:{
       'Content-Type': 'application/json',
-      'Authorization': AppStorage.get(USER_SETTING_TOKEN) || '',
+      'Authorization': AppStorage.get(USER_SETTING_TOKEN)   || '',
     },
     extraData: method !== http.RequestMethod.GET ? data : "", // 当请求类型不等于get时 复制
     readTimeout: 10000 // 超时时间
