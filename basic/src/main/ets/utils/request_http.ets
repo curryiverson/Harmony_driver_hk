@@ -1,7 +1,7 @@
 import http from '@ohos.net.http';
 import {BASE_URL, USER_SETTING_TOKEN} from '../constants'
 import { ResponseData } from '../viewmodels';
-import { promptAction } from '@kit.ArkUI';
+import { promptAction, router } from '@kit.ArkUI';
 
 async function requestByHttp<T>(url:string, method:http.RequestMethod = http.RequestMethod.GET, data?: object) {
   //创建请求对象
@@ -25,10 +25,12 @@ async function requestByHttp<T>(url:string, method:http.RequestMethod = http.Req
   }
   try {
     const result = await httpRequest.request(myUrl,config)
+    promptAction.showToast({message:JSON.stringify(result)})
     //状态码判断
     if(result.responseCode === 401){
       //登录失效
-      promptAction.showToast({message:'登录失效'})
+      // promptAction.showToast({message:'登录失效'})
+      router.replaceUrl({url:'pages/Login/login'})
       AppStorage.setOrCreate(USER_SETTING_TOKEN, '')
       return Promise.reject(new Error("请求地址错误"))
     }else{

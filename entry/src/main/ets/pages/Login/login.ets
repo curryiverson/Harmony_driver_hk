@@ -1,4 +1,4 @@
-import { login } from '../../api/user'
+import { login } from '../../api'
 import { loginModel } from '../../viewmodels'
 import { promptAction, router } from '@kit.ArkUI'
 import { userSetting, USER_SETTING_TOKEN } from 'basic'

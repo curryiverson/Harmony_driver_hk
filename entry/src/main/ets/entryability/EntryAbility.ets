@@ -3,7 +3,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction, window } from '@kit.ArkUI';
 import { AdvertClass, userSetting} from 'basic'
 const defaultAd:AdvertClass = {
-  showAd:true,
+  showAd:false,
   adTime:5,
   adUrl:'',
   adImg:$r('app.media.bg_listen')
