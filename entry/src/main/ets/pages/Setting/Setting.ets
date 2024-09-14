@@ -1,4 +1,5 @@
-import {  HkCard, HkCardItem, HkNavBar, HkConfirm } from 'basic'
+import {  HkCard, HkCardItem, HkNavBar, HkConfirm, USER_SETTING_TOKEN, userSetting } from 'basic'
+import { router } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -13,7 +14,12 @@ struct Setting {
         },
         {
           text: '退出',
-          fontColor: $r("app.color.primary")
+          fontColor: $r("app.color.primary"),
+          action:() => {
+            AppStorage.setOrCreate(USER_SETTING_TOKEN,'')
+            userSetting.setUserToken('')
+            router.replaceUrl({url:'pages/Login/login'})
+          }
         },
       ]
     }),
